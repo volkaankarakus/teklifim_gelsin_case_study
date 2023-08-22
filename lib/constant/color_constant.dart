@@ -13,4 +13,13 @@ class ColorConstant extends Color {
       : super.fromRGBO(223, 223, 223, 1);
   const ColorConstant.kBoxContainerTextColorPassive()
       : super.fromRGBO(35, 50, 82, 1);
+  const ColorConstant.kContinueBoxContainerTextColor()
+      : super.fromRGBO(255, 255, 255, 1);
+  const ColorConstant.kContinueBoxContainerBackgroundColor()
+      : super.fromRGBO(189, 189, 189, 1);
+  const ColorConstant.kContinueBoxContainerFilledBackgroundColor() : super.fromRGBO(96,177,171,1);
+  const ColorConstant.kBackBoxContainerBackgroundColor()
+      : super.fromRGBO(158, 158, 158, 1);
+  const ColorConstant.kActiveDotColor() : super.fromRGBO(44, 105, 100, 1);
+  const ColorConstant.kInactiveDotColor() : super.fromRGBO(208, 224, 223, 1);
 }

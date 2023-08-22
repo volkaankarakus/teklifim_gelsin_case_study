@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:teklifim_gelsin_case_study/constant/color_constant.dart';
 import 'package:teklifim_gelsin_case_study/constant/padding_constant.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type.dart';
-import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type_how_old_are_u/card_model_type_how_old_are_u.dart';
 import 'package:teklifim_gelsin_case_study/view_model(cubit)/home/home_cubit.dart';
 import 'package:teklifim_gelsin_case_study/widget/box_container.dart';
 import 'package:teklifim_gelsin_case_study/widget/dynamic_sized_box.dart';
 import 'package:teklifim_gelsin_case_study/widget/home_view/container_button_widget.dart';
-import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/card_model_extension.dart';
+import 'package:teklifim_gelsin_case_study/widget/home_view/continue_button_widget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -41,73 +42,13 @@ class _HomeViewState extends State<HomeView> {
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               DynamicSizedBox(size: MediaQuery.sizeOf(context).height * 0.02),
-              BoxContainer(
-                enablePadding: false,
-                height: MediaQuery.sizeOf(context).height * 0.4,
-                width: MediaQuery.sizeOf(context).width,
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.info_outline),
-                          iconSize: 27,
-                        ),
-                      ],
-                    ),
-                    Text(
-                      'Kaç yaşındasın?',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    DynamicSizedBox(
-                        size: MediaQuery.sizeOf(context).height * 0.02),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: SizedBox(
-                        height: MediaQuery.sizeOf(context).height * 0.3,
-                        child: BlocSelector<HomeCubit, HomeState,
-                            List<CardModel<CardModelType>>>(
-                          selector: (state) => state.howOldAreYouCardList!,
-                          builder: (context, state) {
-                            return GridView.builder(
-                              itemCount: state.length,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                mainAxisSpacing: 5.0,
-                                crossAxisSpacing: 5.0,
-                                childAspectRatio: 3,
-                              ),
-                              itemBuilder: (context, index) {
-                                CardModel<CardModelType> cardModel =
-                                    state[index];
-                                return BlocSelector<HomeCubit, HomeState,
-                                    CardModel<CardModelType>?>(
-                                  selector: (state) =>
-                                      state.selectedHowOldAreUCardModel,
-                                  builder: (context, state) {
-                                    return InkWell(
-                                      onTap: () => context
-                                          .read<HomeCubit>()
-                                          .changeIsSelected(
-                                              cardModel: cardModel),
-                                      child: ContainerButtonWidget(
-                                          cardModel: cardModel as CardModel<
-                                              CardModelTypeHowOldAreU>),
-                                    );
-                                  },
-                                );
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+              BlocSelector<HomeCubit, HomeState, PageController>(
+                selector: (state) => state.controller!,
+                builder: (context, state) {
+                  return HomeViewCardWidget(pageController: state);
+                },
               ),
+
               // BlocSelector<HomeCubit, HomeState, OffersModel?>(
               //   selector: (state) => state.offersModel,
               //   builder: (context, state) {
@@ -131,6 +72,167 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class HomeViewCardWidget extends StatelessWidget {
+  final PageController pageController;
+  const HomeViewCardWidget({
+    super.key,
+    required this.pageController,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BoxContainer(
+      enablePadding: false,
+      height: MediaQuery.sizeOf(context).height * 0.45,
+      width: MediaQuery.sizeOf(context).width,
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.info_outline),
+                iconSize: 27,
+              ),
+            ],
+          ),
+          SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.27,
+            child: PageView(
+              physics: NeverScrollableScrollPhysics(),
+              controller: pageController,
+              children: [
+                BlocSelector<HomeCubit, HomeState,
+                    List<CardModel<CardModelType>>>(
+                  selector: (state) => state.howOldAreYouCardList!,
+                  builder: (context, state) {
+                    return CardSubWidget(
+                      headlineText: 'Kaç yaşındasın?',
+                      cardList: state,
+                    );
+                  },
+                ),
+                BlocSelector<HomeCubit, HomeState,
+                    List<CardModel<CardModelType>>>(
+                  selector: (state) => state.spendingHabitsCardList!,
+                  builder: (context, state) {
+                    return CardSubWidget(
+                      headlineText: 'Harcama alışkanlıkların neler?',
+                      cardList: state,
+                    );
+                  },
+                ),
+                BlocSelector<HomeCubit, HomeState,
+                    List<CardModel<CardModelType>>>(
+                  selector: (state) => state.creditCardExpectationsCardList!,
+                  builder: (context, state) {
+                    return CardSubWidget(
+                      headlineText: 'Kredi kartından beklentilerini sırala',
+                      cardList: state,
+                    );
+                  },
+                )
+              ],
+            ),
+          ),
+          SmoothPageIndicator(
+            controller: pageController,
+            count: 3,
+            effect: ExpandingDotsEffect(
+              activeDotColor: ColorConstant.kActiveDotColor(),
+              dotColor: ColorConstant.kInactiveDotColor(),
+            ),
+          ),
+          DynamicSizedBox(
+            size: MediaQuery.sizeOf(context).height * 0.02,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: ContinueButtonWidget(),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class CardSubWidget<T extends CardModelType> extends StatelessWidget {
+  final String headlineText;
+  final List<CardModel<CardModelType>> cardList;
+  final CardModel<CardModelType>? selectedCard;
+  const CardSubWidget({
+    super.key,
+    required this.headlineText,
+    required this.cardList,
+    this.selectedCard,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          headlineText,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        BlocSelector<HomeCubit, HomeState, int>(
+          selector: (state) => state.counter ?? 1,
+          builder: (context, state) {
+            return DynamicSizedBox(
+                size: state.isOdd
+                    ? MediaQuery.sizeOf(context).height * 0.05
+                    : MediaQuery.sizeOf(context).height * 0.02);
+          },
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: BlocSelector<HomeCubit, HomeState, int>(
+            selector: (state) => state.counter ?? 1,
+            builder: (context, state) {
+              return SizedBox(
+                height: state.isOdd
+                    ? MediaQuery.sizeOf(context).height * 0.15
+                    : MediaQuery.sizeOf(context).height * 0.2,
+                child: BlocSelector<HomeCubit, HomeState,
+                    List<CardModel<CardModelType>>>(
+                  selector: (state) => cardList,
+                  builder: (context, state) {
+                    return GridView.builder(
+                      itemCount: state.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 5.0,
+                        crossAxisSpacing: 5.0,
+                        childAspectRatio: 3,
+                      ),
+                      itemBuilder: (context, index) {
+                        CardModel<CardModelType> cardModel = state[index];
+                        return BlocSelector<HomeCubit, HomeState,
+                            CardModel<CardModelType>?>(
+                          selector: (state) => selectedCard,
+                          builder: (context, state) {
+                            return ContainerButtonWidget(
+                              cardModel: cardModel as CardModel<T>,
+                              onTap: () => context
+                                  .read<HomeCubit>()
+                                  .changeIsSelected(cardModel: cardModel),
+                            );
+                          },
+                        );
+                      },
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }

@@ -40,6 +40,9 @@ dependencies:
   #Router
   auto_route: ^5.0.4
 
+  #Page Indicator
+  smooth_page_indicator: ^1.1.0
+
 
 dev_dependencies:
   flutter_test:

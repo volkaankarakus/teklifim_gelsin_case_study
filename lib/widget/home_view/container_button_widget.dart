@@ -7,26 +7,33 @@ import 'package:teklifim_gelsin_case_study/widget/box_container.dart';
 
 class ContainerButtonWidget<T extends CardModelType> extends StatelessWidget {
   final CardModel<T> cardModel;
-  ContainerButtonWidget({required this.cardModel});
+  final Function()? onTap;
+  ContainerButtonWidget({
+    required this.cardModel,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BoxContainer(
-      border: Border.all(
-        color: ColorConstant.kBoxContainerBorderColor(),
-        width: 50,
-      ),
-      color: (cardModel.isSelected ?? false)
-          ? ColorConstant.kBoxContainerColorActive()
-          : ColorConstant.kBoxContainerColorPassive(),
-      child: Center(
-        child: Text(
-          cardModel.getText,
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-              color: (cardModel.isSelected ?? false)
-                  ? ColorConstant.kBoxContainerBackgroundColor()
-                  : ColorConstant.kBoxContainerTextColorPassive(),
-              fontWeight: FontWeight.bold),
+    return InkWell(
+      onTap: onTap,
+      child: BoxContainer(
+        border: Border.all(
+          color: ColorConstant.kBoxContainerBorderColor(),
+          width: 50,
+        ),
+        color: (cardModel.isSelected ?? false)
+            ? ColorConstant.kBoxContainerColorActive()
+            : ColorConstant.kBoxContainerColorPassive(),
+        child: Center(
+          child: Text(
+            cardModel.getText,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                color: (cardModel.isSelected ?? false)
+                    ? ColorConstant.kBoxContainerBackgroundColor()
+                    : ColorConstant.kBoxContainerTextColorPassive(),
+                fontWeight: FontWeight.bold),
+          ),
         ),
       ),
     );
