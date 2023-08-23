@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:teklifim_gelsin_case_study/constant/color_constant.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type.dart';
+import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type_how_old_are_u/card_model_type_how_old_are_u.dart';
 import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/card_model_extension.dart';
 import 'package:teklifim_gelsin_case_study/widget/box_container.dart';
 
@@ -16,26 +17,54 @@ class ContainerButtonWidget<T extends CardModelType> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
-      child: BoxContainer(
-        border: Border.all(
-          color: ColorConstant.kBoxContainerBorderColor(),
-          width: 50,
-        ),
-        color: (cardModel.isSelected ?? false)
-            ? ColorConstant.kBoxContainerColorActive()
-            : ColorConstant.kBoxContainerColorPassive(),
-        child: Center(
-          child: Text(
-            cardModel.getText,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: (cardModel.isSelected ?? false)
-                    ? ColorConstant.kBoxContainerBackgroundColor()
-                    : ColorConstant.kBoxContainerTextColorPassive(),
-                fontWeight: FontWeight.bold),
-          ),
-        ),
-      ),
-    );
+        onTap: onTap,
+        child: Stack(
+          clipBehavior: Clip.none,
+          fit: StackFit.expand,
+          children: [
+            BoxContainer(
+              border: Border.all(
+                color: ColorConstant.kBoxContainerBorderColor(),
+                width: 50,
+              ),
+              color: (cardModel.isSelected ?? false)
+                  ? ColorConstant.kBoxContainerColorActive()
+                  : ColorConstant.kBoxContainerColorPassive(),
+              child: Center(
+                child: Text(
+                  cardModel.getText,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: (cardModel.isSelected ?? false)
+                          ? ColorConstant.kBoxContainerBackgroundColor()
+                          : ColorConstant.kBoxContainerTextColorPassive(),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            if ((cardModel.isSelected ?? false) &&
+                !(cardModel.type is CardModelTypeHowOldAreU))
+              Positioned(
+                right: 0,
+                top: -10,
+                child: BoxContainer(
+                  width: 25,
+                  enablePadding: false,
+                  shape: BoxShape.circle,
+                  color: ColorConstant
+                      .kContinueBoxContainerFilledBackgroundColor(),
+                  child: Center(
+                    child: Text(
+                      cardModel.index.toString(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ));
   }
 }

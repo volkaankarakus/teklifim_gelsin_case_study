@@ -18,4 +18,17 @@ extension HowOldAreUExtension on HowOldAreUEnum {
         return '36 ve üzeri';
     }
   }
+
+  int get asIDInt {
+    switch (this) {
+      case HowOldAreUEnum.youngerAndEqual18:
+        return 1;
+      case HowOldAreUEnum.between19and25:
+        return 2;
+      case HowOldAreUEnum.between26and35:
+        return 3;
+      case HowOldAreUEnum.olderAndEqual36:
+        return 4;
+    }
+  }
 }

@@ -21,11 +21,11 @@ extension CardModelExtension on CardModel {
     return listCardModel;
   }
 
-  List<CardModel<CardModelType>> changeIsSelectedSpendingHabits(
-      {required List<CardModel<CardModelType>> listCardModel}) {
-         this.isSelected = !(this.isSelected ?? false);
+  List<CardModel<CardModelType>> changeIsSelectedSpendingHabits({
+    required List<CardModel<CardModelType>> listCardModel,
+  }) {
+    this.isSelected = !(this.isSelected ?? false);
 
     return listCardModel;
   }
-
 }

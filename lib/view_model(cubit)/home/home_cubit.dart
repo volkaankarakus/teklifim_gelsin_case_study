@@ -6,7 +6,6 @@ import 'package:teklifim_gelsin_case_study/model/card_model/card_model.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type_how_old_are_u/card_model_type_how_old_are_u.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type_spending_habits/card_model_type_spending_habits.dart';
-import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/list_card_model_extension.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/static_model/static_model.dart';
 import 'package:teklifim_gelsin_case_study/model/offers_model.dart';
 import 'package:teklifim_gelsin_case_study/request/post/create_card_post_request.dart';
@@ -43,23 +42,41 @@ class HomeCubit extends Cubit<HomeState> {
           state.selectedSpendingHabitsList?.toList();
       selectedSpendingHabits?.add(cardModel);
       cardModel.changeIsSelectedSpendingHabits(
-          listCardModel: selectedSpendingHabits ?? []);
+          listCardModel: selectedSpendingHabits ?? [],
+          );
       emit(state.copyWith(selectedSpendingHabitsList: selectedSpendingHabits));
       List<CardModel<CardModelType>>? spendingHabitsCardList =
           state.spendingHabitsCardList?.toList();
-
+      cardModel.index = selectedSpendingHabits?.length ?? 0;
       emit(state.copyWith(spendingHabitsCardList: spendingHabitsCardList));
     }
   }
 
+  // Increment card index
+  void incrementCardIndex() {
+    emit(state.copyWith(
+        assignedIndexToCardSpendingHabits:
+            (state.assignedIndexToCardSpendingHabits! + 1)));
+  }
+
+  // Decrement card index
+  void decrementCardIndex() {
+    emit(state.copyWith(
+        assignedIndexToCardSpendingHabits:
+            (state.assignedIndexToCardSpendingHabits! - 1)));
+  }
+
+  // Page Increment Counter
   void incrementCounter() {
-    emit(state.copyWith(counter: ++counter));
+    emit(state.copyWith(counter: ccounter++));
   }
 
+  // Page Decrement Counter
   void decrementCounter() {
-    emit(state.copyWith(counter: --counter));
+    emit(state.copyWith(counter: ccounter--));
   }
 
+  // Next Page
   void nextPage() {
     incrementCounter();
 
@@ -70,6 +87,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(state.copyWith(controller: state.controller));
   }
 
+  // Previous Page
   void previousPage() {
     decrementCounter();
     state.controller?.previousPage(

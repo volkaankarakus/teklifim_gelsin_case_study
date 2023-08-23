@@ -24,4 +24,21 @@ extension SpendingHabitsExtension on SpendingHabitsEnum {
         return 'Diğer';
     }
   }
+
+  int get asIDInt {
+    switch (this) {
+      case SpendingHabitsEnum.trip:
+        return 1;
+      case SpendingHabitsEnum.onlineShopping:
+        return 2;
+      case SpendingHabitsEnum.eatingAndDrinking:
+        return 3;
+      case SpendingHabitsEnum.foodAndMarket:
+        return 4;
+      case SpendingHabitsEnum.bill:
+        return 5;
+      case SpendingHabitsEnum.other:
+        return 6;
+    }
+  }
 }

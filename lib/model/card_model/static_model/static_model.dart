@@ -8,19 +8,15 @@ class StaticModel {
   static List<CardModel>? howOldAreUCardList =
       <CardModel<CardModelTypeHowOldAreU>>[
     CardModel(
-      index: 0,
       type: CardModelTypeHowOldAreUUnder18(),
     ),
     CardModel(
-      index: 1,
       type: CardModelTypeHowOldAreUBetween19and25(),
     ),
     CardModel(
-      index: 2,
       type: CardModelTypeHowOldAreUBetween26and35(),
     ),
     CardModel(
-      index: 3,
       type: CardModelTypeHowOldAreUOlderAndEqual36(),
     ),
   ];
@@ -29,27 +25,21 @@ class StaticModel {
   static List<CardModel>? spendingHabitsCardList =
       <CardModel<CardModelTypeSpendingHabits>>[
     CardModel(
-      index: 0,
       type: CardModelTyoeSpendingHabitsTrip(),
     ),
     CardModel(
-      index: 1,
       type: CardModelTyoeSpendingHabitsOnlineShopping(),
     ),
     CardModel(
-      index: 2,
       type: CardModelTyoeSpendingHabitsEatingAndDrinking(),
     ),
     CardModel(
-      index: 3,
       type: CardModelTyoeSpendingHabitsFoodAndMarket(),
     ),
     CardModel(
-      index: 4,
       type: CardModelTyoeSpendingHabitsBill(),
     ),
     CardModel(
-      index: 5,
       type: CardModelTyoeSpendingHabitsOther(),
     ),
   ];
@@ -58,19 +48,15 @@ class StaticModel {
   static List<CardModel>? creditCardExpectationsCardList =
       <CardModel<CardModelTypeCreditCardExpectations>>[
     CardModel(
-      index: 0,
       type: CardModelTypeCreditCardExpectationsPoint(),
     ),
     CardModel(
-      index: 1,
       type: CardModelTypeCreditCardExpectationsMill(),
     ),
     CardModel(
-      index: 2,
       type: CardModelTypeCreditCardExpectationsDiscount(),
     ),
     CardModel(
-      index: 3,
       type: CardModelTypeCreditCardExpectationsInstallmentOpportunity(),
     ),
   ];

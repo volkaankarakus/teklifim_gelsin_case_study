@@ -3,7 +3,8 @@ import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/credit_card_
 
 // ** Credit Card Expectations
 class CardModelTypeCreditCardExpectations extends CardModelType {
-  CardModelTypeCreditCardExpectations(String text) : super(text: text);
+  CardModelTypeCreditCardExpectations({required String text, required int id})
+      : super(text: text, id: id);
 }
 
 // Credit Card Expectations subclasses
@@ -11,26 +12,38 @@ class CardModelTypeCreditCardExpectations extends CardModelType {
 class CardModelTypeCreditCardExpectationsPoint
     extends CardModelTypeCreditCardExpectations {
   CardModelTypeCreditCardExpectationsPoint()
-      : super(CreditCardExpectationsEnum.point.asString);
+      : super(
+          id: CreditCardExpectationsEnum.point.asIDInt,
+          text: CreditCardExpectationsEnum.point.asString,
+        );
 }
 
 // Mill
 class CardModelTypeCreditCardExpectationsMill
     extends CardModelTypeCreditCardExpectations {
   CardModelTypeCreditCardExpectationsMill()
-      : super(CreditCardExpectationsEnum.mill.asString);
+      : super(
+          id: CreditCardExpectationsEnum.mill.asIDInt,
+          text: CreditCardExpectationsEnum.mill.asString,
+        );
 }
 
 // Discount
 class CardModelTypeCreditCardExpectationsDiscount
     extends CardModelTypeCreditCardExpectations {
   CardModelTypeCreditCardExpectationsDiscount()
-      : super(CreditCardExpectationsEnum.discount.asString);
+      : super(
+          id: CreditCardExpectationsEnum.discount.asIDInt,
+          text: CreditCardExpectationsEnum.discount.asString,
+        );
 }
 
 // Installment Opportunity
 class CardModelTypeCreditCardExpectationsInstallmentOpportunity
     extends CardModelTypeCreditCardExpectations {
   CardModelTypeCreditCardExpectationsInstallmentOpportunity()
-      : super(CreditCardExpectationsEnum.installmentOpportunity.asString);
+      : super(
+          id: CreditCardExpectationsEnum.installmentOpportunity.asIDInt,
+          text: CreditCardExpectationsEnum.installmentOpportunity.asString,
+        );
 }

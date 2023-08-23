@@ -18,4 +18,17 @@ extension CreditCardExpectationsExtension on CreditCardExpectationsEnum {
         return 'Taksit İmkanı';
     }
   }
+
+  int get asIDInt {
+    switch (this) {
+      case CreditCardExpectationsEnum.point:
+        return 1;
+      case CreditCardExpectationsEnum.mill:
+        return 2;
+      case CreditCardExpectationsEnum.discount:
+        return 3;
+      case CreditCardExpectationsEnum.installmentOpportunity:
+        return 4;
+    }
+  }
 }
