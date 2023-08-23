@@ -6,6 +6,7 @@ final class HomeState extends Equatable {
     this.offersModel,
     this.selectedHowOldAreUCardModel,
     this.selectedSpendingHabitsList,
+    this.selectedCreditCardExpectations,
     this.howOldAreYouCardList,
     this.controller,
     this.counter,
@@ -48,11 +49,14 @@ final class HomeState extends Equatable {
     PageController? controller,
     int? counter,
     List<CardModel>? selectedSpendingHabitsList,
+    List<CardModel>? selectedCreditCardExpectations,
   }) {
     return HomeState(
         offersModel: offersModel ?? this.offersModel,
         selectedHowOldAreUCardModel:
             selectedHowOldAreUCardModel ?? this.selectedHowOldAreUCardModel,
+        selectedCreditCardExpectations: selectedCreditCardExpectations ??
+            this.selectedCreditCardExpectations,
         howOldAreYouCardList: howOldAreYouCardList ?? this.howOldAreYouCardList,
         controller: controller ?? this.controller,
         counter: counter ?? this.counter,
@@ -73,6 +77,7 @@ final class HomeState extends Equatable {
         controller,
         counter,
         selectedSpendingHabitsList,
+        selectedCreditCardExpectations
       ];
 }
 

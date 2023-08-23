@@ -10,6 +10,8 @@ import 'package:teklifim_gelsin_case_study/model/card_model/static_model/static_
 import 'package:teklifim_gelsin_case_study/model/offers_model.dart';
 import 'package:teklifim_gelsin_case_study/request/post/create_card_post_request.dart';
 import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/card_model_extension.dart';
+import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/list_card_model_extension.dart';
+
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -28,6 +30,8 @@ class HomeCubit extends Cubit<HomeState> {
   void initLists() {
     emit(state.copyWith(selectedSpendingHabitsList: []));
     emit(state.copyWith(spendingHabitsCardList: []));
+    emit(state.copyWith(selectedCreditCardExpectations: []));
+    emit(state.copyWith(creditCardExpectationsCardList: []));
   }
 
   void changeIsSelected({required CardModel<CardModelType> cardModel}) {
@@ -40,19 +44,7 @@ class HomeCubit extends Cubit<HomeState> {
     } else if (cardModel.type is CardModelTypeSpendingHabits) {
       List<CardModel<CardModelType>>? selectedSpendingHabits =
           state.selectedSpendingHabitsList?.toList();
-      if (selectedSpendingHabits?.contains(cardModel) ?? false) {
-        if (selectedSpendingHabits!.last != cardModel) {
-          for (var element in selectedSpendingHabits) {
-            if (element.index > cardModel.index) {
-              element.index--;
-            }
-          }
-        }
-        cardModel.index = 0;
-        selectedSpendingHabits.remove(cardModel);
-      } else {
-        selectedSpendingHabits?.add(cardModel);
-      }
+      selectedSpendingHabits.isContainsInListControl(cardModel: cardModel);
       cardModel.changeIsSelectedSpendingHabits(
         listCardModel: selectedSpendingHabits ?? [],
       );
@@ -61,9 +53,23 @@ class HomeCubit extends Cubit<HomeState> {
           state.spendingHabitsCardList?.toList();
       cardModel.index = selectedSpendingHabits?.length ?? 0;
       emit(state.copyWith(spendingHabitsCardList: spendingHabitsCardList));
+    } else {
+      List<CardModel<CardModelType>>? selectedCreditCardExpectations =
+          state.selectedCreditCardExpectations?.toList();
+      selectedCreditCardExpectations.isContainsInListControl(
+          cardModel: cardModel);
+      cardModel.changeIsSelectedSpendingHabits(
+        listCardModel: selectedCreditCardExpectations ?? [],
+      );
+      emit(state.copyWith(
+          selectedCreditCardExpectations: selectedCreditCardExpectations));
+      List<CardModel<CardModelType>>? creditCardExpectationsCardList =
+          state.creditCardExpectationsCardList?.toList();
+      cardModel.index = selectedCreditCardExpectations?.length ?? 0;
+      emit(state.copyWith(
+          creditCardExpectationsCardList: creditCardExpectationsCardList));
     }
   }
-
 
   // Page Increment Counter
   void incrementCounter() {
