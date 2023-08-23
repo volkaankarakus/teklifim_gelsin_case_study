@@ -11,14 +11,12 @@ final class HomeState extends Equatable {
     this.counter,
     this.spendingHabitsCardList,
     this.creditCardExpectationsCardList,
-    this.assignedIndexToCardSpendingHabits,
   }) {
     howOldAreYouCardList = StaticModel.howOldAreUCardList;
     spendingHabitsCardList = StaticModel.spendingHabitsCardList;
     creditCardExpectationsCardList = StaticModel.creditCardExpectationsCardList;
     controller = ccontroller;
     counter = ccounter;
-    assignedIndexToCardSpendingHabits = assignedIndexSpendingHabits;
   }
 
   OffersModel? offersModel;
@@ -41,9 +39,6 @@ final class HomeState extends Equatable {
   // Page Controller
   PageController? controller = PageController();
 
-  // Assigned Index to Card
-  int? assignedIndexToCardSpendingHabits;
-
   HomeState copyWith({
     OffersModel? offersModel,
     CardModel<CardModelType>? selectedHowOldAreUCardModel,
@@ -53,7 +48,6 @@ final class HomeState extends Equatable {
     PageController? controller,
     int? counter,
     List<CardModel>? selectedSpendingHabitsList,
-    int? assignedIndexToCardSpendingHabits,
   }) {
     return HomeState(
         offersModel: offersModel ?? this.offersModel,
@@ -66,8 +60,6 @@ final class HomeState extends Equatable {
             spendingHabitsCardList ?? this.spendingHabitsCardList,
         creditCardExpectationsCardList: creditCardExpectationsCardList ??
             this.creditCardExpectationsCardList,
-        assignedIndexToCardSpendingHabits: assignedIndexToCardSpendingHabits ??
-            this.assignedIndexToCardSpendingHabits,
         selectedSpendingHabitsList:
             selectedSpendingHabitsList ?? this.selectedSpendingHabitsList);
   }
@@ -81,10 +73,8 @@ final class HomeState extends Equatable {
         controller,
         counter,
         selectedSpendingHabitsList,
-        assignedIndexToCardSpendingHabits,
       ];
 }
 
 PageController ccontroller = PageController();
 int ccounter = 1;
-int assignedIndexSpendingHabits = 1;

@@ -40,10 +40,22 @@ class HomeCubit extends Cubit<HomeState> {
     } else if (cardModel.type is CardModelTypeSpendingHabits) {
       List<CardModel<CardModelType>>? selectedSpendingHabits =
           state.selectedSpendingHabitsList?.toList();
-      selectedSpendingHabits?.add(cardModel);
+      if (selectedSpendingHabits?.contains(cardModel) ?? false) {
+        if (selectedSpendingHabits!.last != cardModel) {
+          for (var element in selectedSpendingHabits) {
+            if (element.index > cardModel.index) {
+              element.index--;
+            }
+          }
+        }
+        cardModel.index = 0;
+        selectedSpendingHabits.remove(cardModel);
+      } else {
+        selectedSpendingHabits?.add(cardModel);
+      }
       cardModel.changeIsSelectedSpendingHabits(
-          listCardModel: selectedSpendingHabits ?? [],
-          );
+        listCardModel: selectedSpendingHabits ?? [],
+      );
       emit(state.copyWith(selectedSpendingHabitsList: selectedSpendingHabits));
       List<CardModel<CardModelType>>? spendingHabitsCardList =
           state.spendingHabitsCardList?.toList();
@@ -52,19 +64,6 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  // Increment card index
-  void incrementCardIndex() {
-    emit(state.copyWith(
-        assignedIndexToCardSpendingHabits:
-            (state.assignedIndexToCardSpendingHabits! + 1)));
-  }
-
-  // Decrement card index
-  void decrementCardIndex() {
-    emit(state.copyWith(
-        assignedIndexToCardSpendingHabits:
-            (state.assignedIndexToCardSpendingHabits! - 1)));
-  }
 
   // Page Increment Counter
   void incrementCounter() {
