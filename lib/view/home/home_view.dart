@@ -21,7 +21,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<HomeCubit>(
       create: (context) => HomeCubit(),
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -107,36 +107,25 @@ class HomeViewCardWidget extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               controller: pageController,
               children: [
-                BlocSelector<HomeCubit, HomeState,
-                    List<CardModel<CardModelType>>>(
-                  selector: (state) => state.howOldAreYouCardList!,
-                  builder: (context, state) {
-                    return CardSubWidget(
-                      headlineText: 'Kaç yaşındasın?',
-                      cardList: state,
-                    );
-                  },
-                ),
-                BlocSelector<HomeCubit, HomeState,
-                    List<CardModel<CardModelType>>>(
-                  selector: (state) => state.spendingHabitsCardList!,
-                  builder: (context, state) {
-                    return CardSubWidget(
-                      headlineText: 'Harcama alışkanlıkların neler?',
-                      cardList: state,
-                    );
-                  },
-                ),
-                BlocSelector<HomeCubit, HomeState,
-                    List<CardModel<CardModelType>>>(
-                  selector: (state) => state.creditCardExpectationsCardList!,
-                  builder: (context, state) {
-                    return CardSubWidget(
-                      headlineText: 'Kredi kartından beklentilerini sırala',
-                      cardList: state,
-                    );
-                  },
-                )
+                CardSubWidget(
+                    headlineText: 'Kaç yaşındasın',
+                    cardList:
+                        context.watch<HomeCubit>().state.howOldAreYouCardList ??
+                            []),
+                CardSubWidget(
+                    headlineText: 'Harcama alışkanlıkların neler?',
+                    cardList: context
+                            .watch<HomeCubit>()
+                            .state
+                            .spendingHabitsCardList ??
+                        []),
+                CardSubWidget(
+                    headlineText: 'Kredi kartından beklentilerini sırala',
+                    cardList: context
+                            .watch<HomeCubit>()
+                            .state
+                            .creditCardExpectationsCardList ??
+                        []),
               ],
             ),
           ),
@@ -161,7 +150,7 @@ class HomeViewCardWidget extends StatelessWidget {
   }
 }
 
-class CardSubWidget<T extends CardModelType> extends StatelessWidget {
+class CardSubWidget<T extends CardModelType> extends StatefulWidget {
   final String headlineText;
   final List<CardModel<CardModelType>> cardList;
   final CardModel<CardModelType>? selectedCard;
@@ -173,11 +162,23 @@ class CardSubWidget<T extends CardModelType> extends StatelessWidget {
   });
 
   @override
+  State<CardSubWidget<T>> createState() => _CardSubWidgetState<T>();
+}
+
+class _CardSubWidgetState<T extends CardModelType>
+    extends State<CardSubWidget<T>> {
+  @override
+  void didChangeDependencies() {
+    BlocProvider.of<HomeCubit>(context).initLists();
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          headlineText,
+          widget.headlineText,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
         BlocSelector<HomeCubit, HomeState, int>(
@@ -200,7 +201,7 @@ class CardSubWidget<T extends CardModelType> extends StatelessWidget {
                     : MediaQuery.sizeOf(context).height * 0.2,
                 child: BlocSelector<HomeCubit, HomeState,
                     List<CardModel<CardModelType>>>(
-                  selector: (state) => cardList,
+                  selector: (state) => widget.cardList,
                   builder: (context, state) {
                     return GridView.builder(
                       itemCount: state.length,
@@ -214,7 +215,7 @@ class CardSubWidget<T extends CardModelType> extends StatelessWidget {
                         CardModel<CardModelType> cardModel = state[index];
                         return BlocSelector<HomeCubit, HomeState,
                             CardModel<CardModelType>?>(
-                          selector: (state) => selectedCard,
+                          selector: (state) => widget.selectedCard,
                           builder: (context, state) {
                             return ContainerButtonWidget(
                               cardModel: cardModel as CardModel<T>,

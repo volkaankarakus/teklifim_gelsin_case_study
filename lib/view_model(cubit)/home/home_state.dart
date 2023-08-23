@@ -4,6 +4,7 @@ class HomeState extends Equatable {
   HomeState({
     this.offersModel,
     this.selectedHowOldAreUCardModel,
+    this.selectedSpendingHabitsList,
     this.howOldAreYouCardList,
     this.controller,
     this.counter,
@@ -20,10 +21,17 @@ class HomeState extends Equatable {
   OffersModel? offersModel;
   int? counter;
 
-  CardModel<CardModelType>? selectedHowOldAreUCardModel;
+  // How old are u
   List<CardModel>? howOldAreYouCardList;
+  CardModel<CardModelType>? selectedHowOldAreUCardModel;
+
+  // Spending Habits
   List<CardModel>? spendingHabitsCardList;
+  List<CardModel>? selectedSpendingHabitsList;
+
+  // Credit Card Expectations
   List<CardModel>? creditCardExpectationsCardList;
+  List<CardModel>? selectedCreditCardExpectations;
 
   PageController? controller = PageController();
 
@@ -35,19 +43,21 @@ class HomeState extends Equatable {
     List<CardModel>? creditCardExpectationsCardList,
     PageController? controller,
     int? counter,
+    List<CardModel>? selectedSpendingHabitsList,
   }) {
     return HomeState(
-      offersModel: offersModel ?? this.offersModel,
-      selectedHowOldAreUCardModel:
-          selectedHowOldAreUCardModel ?? this.selectedHowOldAreUCardModel,
-      howOldAreYouCardList: howOldAreYouCardList ?? this.howOldAreYouCardList,
-      controller: controller ?? this.controller,
-      counter: counter ?? this.counter,
-      spendingHabitsCardList:
-          spendingHabitsCardList ?? this.spendingHabitsCardList,
-      creditCardExpectationsCardList:
-          creditCardExpectationsCardList ?? this.creditCardExpectationsCardList,
-    );
+        offersModel: offersModel ?? this.offersModel,
+        selectedHowOldAreUCardModel:
+            selectedHowOldAreUCardModel ?? this.selectedHowOldAreUCardModel,
+        howOldAreYouCardList: howOldAreYouCardList ?? this.howOldAreYouCardList,
+        controller: controller ?? this.controller,
+        counter: counter ?? this.counter,
+        spendingHabitsCardList:
+            spendingHabitsCardList ?? this.spendingHabitsCardList,
+        creditCardExpectationsCardList: creditCardExpectationsCardList ??
+            this.creditCardExpectationsCardList,
+        selectedSpendingHabitsList:
+            selectedSpendingHabitsList ?? this.selectedSpendingHabitsList);
   }
 
   @override
@@ -58,6 +68,7 @@ class HomeState extends Equatable {
         howOldAreYouCardList,
         controller,
         counter,
+        selectedSpendingHabitsList,
       ];
 }
 
