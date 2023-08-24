@@ -4,7 +4,8 @@ import 'package:teklifim_gelsin_case_study/constant/color_constant.dart';
 import 'package:teklifim_gelsin_case_study/view_model(cubit)/home/home_cubit.dart';
 import 'package:teklifim_gelsin_case_study/widget/box_container.dart';
 
-class UnselectedContinueButtonCreditCardExpectationWidgets extends StatelessWidget {
+class UnselectedContinueButtonCreditCardExpectationWidgets
+    extends StatelessWidget {
   final String headlineText;
   const UnselectedContinueButtonCreditCardExpectationWidgets({
     super.key,

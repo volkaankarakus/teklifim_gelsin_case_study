@@ -27,11 +27,29 @@ class HomeCubit extends Cubit<HomeState> {
 
   // To define a list that will be manipulated in HomeState,
   //   we implement this in Cubit and call it with didChangeDependencies in the view.
+  // If there were no page transitions,
+  //     it would be enough to define the lists as empty, but when we define empty,
+  //     we don't want to reset the lists every time we change a page in a pageView.
   void initLists() {
-    emit(state.copyWith(selectedSpendingHabitsList: []));
-    emit(state.copyWith(spendingHabitsCardList: []));
-    emit(state.copyWith(selectedCreditCardExpectations: []));
-    emit(state.copyWith(creditCardExpectationsCardList: []));
+    emit(state.copyWith(
+        selectedSpendingHabitsList:
+            (state.selectedSpendingHabitsList?.isEmpty ?? true)
+                ? []
+                : state.selectedSpendingHabitsList));
+    emit(state.copyWith(
+        spendingHabitsCardList: (state.spendingHabitsCardList?.isEmpty ?? true)
+            ? []
+            : state.spendingHabitsCardList));
+    emit(state.copyWith(
+        selectedCreditCardExpectations:
+            (state.selectedCreditCardExpectations?.isEmpty ?? true)
+                ? []
+                : state.selectedCreditCardExpectations));
+    emit(state.copyWith(
+        creditCardExpectationsCardList:
+            (state.creditCardExpectationsCardList?.isEmpty ?? true)
+                ? []
+                : state.creditCardExpectationsCardList));
   }
 
   void changeIsSelected({required CardModel<CardModelType> cardModel}) {
@@ -51,7 +69,10 @@ class HomeCubit extends Cubit<HomeState> {
       emit(state.copyWith(selectedSpendingHabitsList: selectedSpendingHabits));
       List<CardModel<CardModelType>>? spendingHabitsCardList =
           state.spendingHabitsCardList?.toList();
-      cardModel.index = selectedSpendingHabits?.length ?? 0;
+      final a = spendingHabitsCardList
+          ?.where((element) => element.isSelected == true)
+          .toList();
+      cardModel.index = a?.length ?? 0;
       emit(state.copyWith(spendingHabitsCardList: spendingHabitsCardList));
     } else {
       List<CardModel<CardModelType>>? selectedCreditCardExpectations =

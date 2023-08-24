@@ -28,7 +28,8 @@ class UnselectedContinueButtonSpendingHabits extends StatelessWidget {
           ignoring: (context
                       .watch<HomeCubit>()
                       .state
-                      .selectedSpendingHabitsList
+                      .spendingHabitsCardList
+                      ?.where((element) => element.isSelected == true)
                       ?.isEmpty ??
                   true)
               ? true

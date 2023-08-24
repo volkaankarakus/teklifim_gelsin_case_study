@@ -23,6 +23,7 @@ class CardSubWidget<T extends CardModelType> extends StatefulWidget {
 
 class _CardSubWidgetState<T extends CardModelType>
     extends State<CardSubWidget<T>> {
+  // This step is required for cubit list definitions
   @override
   void didChangeDependencies() {
     BlocProvider.of<HomeCubit>(context).initLists();
