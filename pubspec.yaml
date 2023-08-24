@@ -14,9 +14,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #Icons
-  cupertino_icons: ^1.0.2
-
+  #Icon
+  cupertino_icons: ^1.0.5
+  
   #Fonts
   google_fonts: ^5.1.0
 
@@ -44,6 +44,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -57,6 +58,8 @@ dev_dependencies:
 
   #Dependendy Injection Generator
   injectable_generator: ^1.5.4
+
+ 
 
 
 flutter:

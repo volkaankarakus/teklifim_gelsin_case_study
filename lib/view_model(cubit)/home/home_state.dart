@@ -3,7 +3,6 @@ part of 'home_cubit.dart';
 @immutable
 final class HomeState extends Equatable {
   HomeState({
-    this.offersModel,
     this.selectedHowOldAreUCardModel,
     this.selectedSpendingHabitsList,
     this.selectedCreditCardExpectations,
@@ -20,7 +19,6 @@ final class HomeState extends Equatable {
     counter = ccounter;
   }
 
-  OffersModel? offersModel;
 
   // Counter for the page changing
   int? counter;
@@ -52,7 +50,6 @@ final class HomeState extends Equatable {
     List<CardModel>? selectedCreditCardExpectations,
   }) {
     return HomeState(
-        offersModel: offersModel ?? this.offersModel,
         selectedHowOldAreUCardModel:
             selectedHowOldAreUCardModel ?? this.selectedHowOldAreUCardModel,
         selectedCreditCardExpectations: selectedCreditCardExpectations ??
@@ -70,7 +67,6 @@ final class HomeState extends Equatable {
 
   @override
   List<Object?> get props => [
-        offersModel,
         selectedHowOldAreUCardModel,
         spendingHabitsCardList,
         howOldAreYouCardList,

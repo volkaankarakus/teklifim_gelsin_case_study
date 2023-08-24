@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:teklifim_gelsin_case_study/app/router/router.dart';
 import 'package:teklifim_gelsin_case_study/constant/duration_constant.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type.dart';
@@ -8,22 +10,13 @@ import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type_how_
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type_spending_habits/card_model_type_spending_habits.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/static_model/static_model.dart';
 import 'package:teklifim_gelsin_case_study/model/offers_model.dart';
-import 'package:teklifim_gelsin_case_study/request/post/create_card_post_request.dart';
 import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/card_model_extension.dart';
 import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/list_card_model_extension.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeState()) {
-    Future.microtask(() => fetchData());
-  }
-  CreateCardPostRequest createCardPostRequest = CreateCardPostRequest();
-
-  Future<void> fetchData() async {
-    OffersModel? response = await createCardPostRequest.fetchOffers();
-    emit(state.copyWith(offersModel: response));
-  }
+  HomeCubit() : super(HomeState());
 
   // To define a list that will be manipulated in HomeState,
   //   we implement this in Cubit and call it with didChangeDependencies in the view.
@@ -52,6 +45,7 @@ class HomeCubit extends Cubit<HomeState> {
                 : state.creditCardExpectationsCardList));
   }
 
+  // ** Change isSelected
   void changeIsSelected({required CardModel<CardModelType> cardModel}) {
     if (cardModel.type is CardModelTypeHowOldAreU) {
       emit(state.copyWith(selectedHowOldAreUCardModel: cardModel));
@@ -69,10 +63,10 @@ class HomeCubit extends Cubit<HomeState> {
       emit(state.copyWith(selectedSpendingHabitsList: selectedSpendingHabits));
       List<CardModel<CardModelType>>? spendingHabitsCardList =
           state.spendingHabitsCardList?.toList();
-      final a = spendingHabitsCardList
+      List<CardModel<CardModelType>>? selectedList = spendingHabitsCardList
           ?.where((element) => element.isSelected == true)
           .toList();
-      cardModel.index = a?.length ?? 0;
+      cardModel.index = selectedList?.length ?? 0;
       emit(state.copyWith(spendingHabitsCardList: spendingHabitsCardList));
     } else {
       List<CardModel<CardModelType>>? selectedCreditCardExpectations =
@@ -121,5 +115,15 @@ class HomeCubit extends Cubit<HomeState> {
       curve: Curves.bounceIn,
     );
     emit(state.copyWith(controller: state.controller));
+  }
+
+  // Navigate to HomeDetailView
+  Future<void> navigateToHomeDetailView({required BuildContext context}) async {
+    await context.router.push(HomeDetailViewRoute(
+      spendingHabitsCardList: state.spendingHabitsCardList ?? [],
+      creditCardExpectationsCardList:
+          state.creditCardExpectationsCardList ?? [],
+      howOldAreYouCardList: state.howOldAreYouCardList ?? [],
+    ));
   }
 }

@@ -144,12 +144,12 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.bold,
     ),
     bodyMedium: TextStyle(
-      color: Color(0xff3d21de),
+      color: ColorConstant.kTextColorBlack(),
       fontSize: 14,
       fontWeight: FontWeight.w500,
     ),
     bodySmall: TextStyle(
-      color: Color(0xff3d21de),
+      color: ColorConstant.kTextColorBlack(),
       fontSize: 12,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,

@@ -8,6 +8,7 @@ import 'package:teklifim_gelsin_case_study/service/network/network_dio_maker_ser
 enum NetworkCreateCardPostPathEnums { api, prep, createCardPost }
 
 class CreateCardPostRequest {
+  // Dependency Injection Service
   NetworkDioMakerService _dioService = locator<NetworkDioMakerService>();
 
   int connectionTimeOut = 2000;

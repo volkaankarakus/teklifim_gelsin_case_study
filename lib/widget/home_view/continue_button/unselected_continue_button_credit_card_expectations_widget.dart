@@ -35,7 +35,9 @@ class UnselectedContinueButtonCreditCardExpectationWidgets
               ? true
               : false,
           child: InkWell(
-            onTap: () => context.read<HomeCubit>().nextPage(),
+            onTap: () => context
+                .read<HomeCubit>()
+                .navigateToHomeDetailView(context: context),
             child: BoxContainer(
               color: (context
                           .watch<HomeCubit>()
