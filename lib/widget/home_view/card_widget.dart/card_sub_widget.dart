@@ -62,7 +62,7 @@ class _CardSubWidgetState<T extends CardModelType>
                   builder: (context, state) {
                     return GridView.builder(
                       itemCount: state.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 5.0,
                         crossAxisSpacing: 5.0,

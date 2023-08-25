@@ -30,7 +30,7 @@ class UnselectedContinueButtonSpendingHabits extends StatelessWidget {
                       .state
                       .spendingHabitsCardList
                       ?.where((element) => element.isSelected == true)
-                      ?.isEmpty ??
+                      .isEmpty ??
                   true)
               ? true
               : false,

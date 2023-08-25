@@ -9,7 +9,7 @@ import 'package:teklifim_gelsin_case_study/widget/box_container.dart';
 class ContainerButtonWidget<T extends CardModelType> extends StatelessWidget {
   final CardModel<T> cardModel;
   final Function()? onTap;
-  ContainerButtonWidget({
+  const ContainerButtonWidget({super.key, 
     required this.cardModel,
     required this.onTap,
   });
@@ -24,25 +24,25 @@ class ContainerButtonWidget<T extends CardModelType> extends StatelessWidget {
           children: [
             BoxContainer(
               border: Border.all(
-                color: ColorConstant.kBoxContainerBorderColor(),
+                color: const ColorConstant.kBoxContainerBorderColor(),
                 width: 50,
               ),
               color: (cardModel.isSelected ?? false)
-                  ? ColorConstant.kBoxContainerColorActive()
-                  : ColorConstant.kBoxContainerColorPassive(),
+                  ? const ColorConstant.kBoxContainerColorActive()
+                  : const ColorConstant.kBoxContainerColorPassive(),
               child: Center(
                 child: Text(
                   cardModel.getText,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       color: (cardModel.isSelected ?? false)
-                          ? ColorConstant.kBoxContainerBackgroundColor()
-                          : ColorConstant.kBoxContainerTextColorPassive(),
+                          ? const ColorConstant.kBoxContainerBackgroundColor()
+                          : const ColorConstant.kBoxContainerTextColorPassive(),
                       fontWeight: FontWeight.bold),
                 ),
               ),
             ),
             if ((cardModel.isSelected ?? false) &&
-                !(cardModel.type is CardModelTypeHowOldAreU))
+                cardModel.type is! CardModelTypeHowOldAreU)
               Positioned(
                 right: 0,
                 top: -10,
@@ -50,12 +50,12 @@ class ContainerButtonWidget<T extends CardModelType> extends StatelessWidget {
                   width: 25,
                   enablePadding: false,
                   shape: BoxShape.circle,
-                  color: ColorConstant
+                  color: const ColorConstant
                       .kContinueBoxContainerFilledBackgroundColor(),
                   child: Center(
                     child: Text(
                       cardModel.index.toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

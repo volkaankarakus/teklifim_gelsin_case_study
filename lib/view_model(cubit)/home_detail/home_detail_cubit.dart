@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type.dart';
+import 'package:teklifim_gelsin_case_study/model/offer_model.dart';
 import 'package:teklifim_gelsin_case_study/model/offers_model.dart';
 import 'package:teklifim_gelsin_case_study/request/post/create_card_post_request.dart';
 
@@ -9,7 +11,7 @@ part 'home_detail_state.dart';
 
 class HomeDetailCubit extends Cubit<HomeDetailState> {
   HomeDetailCubit() : super(HomeDetailState()) {
-    Future.microtask(() => fetchData());
+    Future.microtask(() => fetchData);
   }
 
   // ** Set Values from HomeView
@@ -29,9 +31,21 @@ class HomeDetailCubit extends Cubit<HomeDetailState> {
   CreateCardPostRequest createCardPostRequest = CreateCardPostRequest();
 
   // ** Get Data
-  Future<void> fetchData() async {
+  Future<void> get fetchData async {
     OffersModel? response = await createCardPostRequest.fetchOffers();
     emit(state.copyWith(offersModel: response));
+  }
+
+  // ** Set Sponsor & Active Offers
+  void get setSponsorAndActiveOffers {
+    List<OfferModel>? sponsorOffers =
+        state.offersModel?.sponsored_offers?.toList();
+    List<OfferModel>? activeOffers = state.offersModel?.active_offers?.toList();
+    List<OfferModel>? sponsorAndActiveOffers = [
+      ...sponsorOffers ?? [],
+      ...activeOffers ?? []
+    ];
+    emit(state.copyWith(sponsorAndActiveOffers: sponsorAndActiveOffers));
   }
 
   void a() {

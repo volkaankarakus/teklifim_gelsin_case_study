@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_cache_manager_dio/flutter_cache_manager_dio.dart';
 import 'package:logger/logger.dart';
 import 'package:teklifim_gelsin_case_study/model/network_dio_status_model.dart';
 import 'package:teklifim_gelsin_case_study/service/network/inetwork_manager.dart';
@@ -51,7 +52,7 @@ class NetworkDioManager implements INetworkManager<Dio> {
   Dio build() {
     _dio = Dio(BaseOptions(
       baseUrl: _baseUrl ?? '',
-      headers: Map.fromEntries([_baseHeaders ?? MapEntry('', '')]),
+      headers: Map.fromEntries([_baseHeaders ?? const MapEntry('', '')]),
       connectTimeout:
           Duration(milliseconds: _connectionTimeOutMilliSeconds ?? 0),
       validateStatus: (status) {

@@ -16,6 +16,7 @@ dependencies:
 
   #Icon
   cupertino_icons: ^1.0.5
+  font_awesome_flutter: ^10.5.0
   
   #Fonts
   google_fonts: ^5.1.0
@@ -43,6 +44,14 @@ dependencies:
   #Page Indicator
   smooth_page_indicator: ^1.1.0
 
+  #Cached Network Image
+  cached_network_image: ^3.2.3
+
+  #Custom Cached Manager
+  flutter_cache_manager_dio: ^4.0.0
+  
+  #Path Provider
+  path_provider: ^2.0.11
 
 
 dev_dependencies:

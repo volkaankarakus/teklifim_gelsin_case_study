@@ -28,7 +28,7 @@ class HomeViewCardWidget extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.info_outline),
+                icon: const Icon(Icons.info_outline),
                 iconSize: 27,
               ),
             ],
@@ -36,7 +36,7 @@ class HomeViewCardWidget extends StatelessWidget {
           SizedBox(
             height: MediaQuery.sizeOf(context).height * 0.27,
             child: PageView(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               controller: pageController,
               children: [
                 CardSubWidget(

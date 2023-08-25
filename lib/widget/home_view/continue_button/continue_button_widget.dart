@@ -14,14 +14,3 @@ class ContinueButtonWidget extends StatelessWidget {
             const SizedBox.shrink());
   }
 }
-
-
-// return BlocSelecxtor<HomeCubit, HomeState, int>(
-//       selector: (state) => state.counter ??  1,
-//       builder: (context, state) {
-//         return AnimatedContainer(
-//           duration: Duration(seconds: 2),
-//           // child: state == 1
-//           //     ? UnselectedContinueButtonFirstPickWidget()
-//           //     : UnselectedContinueButtonNotFirstPickWidget(
-//           //         headlineText: 'Devam et'),

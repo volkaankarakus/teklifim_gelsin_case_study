@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+@immutable
 class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
-  void Function()? onPressedAction;
-  AppbarWidget({super.key, this.onPressedAction});
+  final void Function()? onPressedAction;
+  const AppbarWidget({super.key, this.onPressedAction});
 
   @override
   State<AppbarWidget> createState() => _AppbarWidgetState();

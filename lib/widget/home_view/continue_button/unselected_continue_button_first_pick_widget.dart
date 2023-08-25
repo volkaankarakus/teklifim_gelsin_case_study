@@ -20,8 +20,8 @@ class UnselectedContinueButtonFirstPickWidget extends StatelessWidget {
             onTap: () => context.read<HomeCubit>().nextPage(),
             child: BoxContainer(
               color: state == null
-                  ? ColorConstant.kContinueBoxContainerBackgroundColor()
-                  : ColorConstant.kContinueBoxContainerFilledBackgroundColor(),
+                  ? const ColorConstant.kContinueBoxContainerBackgroundColor()
+                  : const ColorConstant.kContinueBoxContainerFilledBackgroundColor(),
               width: double.infinity,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -29,9 +29,9 @@ class UnselectedContinueButtonFirstPickWidget extends StatelessWidget {
                   Text('Devam et',
                       style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             color:
-                                ColorConstant.kContinueBoxContainerTextColor(),
+                                const ColorConstant.kContinueBoxContainerTextColor(),
                           )),
-                  Icon(
+                  const Icon(
                     Icons.chevron_right,
                     color: ColorConstant.kContinueBoxContainerTextColor(),
                   )
