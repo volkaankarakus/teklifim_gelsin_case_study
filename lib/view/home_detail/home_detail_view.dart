@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:teklifim_gelsin_case_study/constant/color_constant.dart';
 import 'package:teklifim_gelsin_case_study/constant/padding_constant.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model.dart';
 import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type.dart';
 import 'package:teklifim_gelsin_case_study/model/offer_model.dart';
-import 'package:teklifim_gelsin_case_study/model/offers_model.dart';
 import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/offers_model_extension.dart';
 import 'package:teklifim_gelsin_case_study/view_model(cubit)/home_detail/home_detail_cubit.dart';
 import 'package:teklifim_gelsin_case_study/widget/appbar/appbar_widget.dart';
-import 'package:teklifim_gelsin_case_study/widget/box_container.dart';
-import 'package:teklifim_gelsin_case_study/widget/cached_network_image_widget.dart';
 import 'package:teklifim_gelsin_case_study/widget/dynamic_sized_box.dart';
-import 'package:teklifim_gelsin_case_study/widget/home_detail_view/apply_now_container_widget.dart';
 import 'package:teklifim_gelsin_case_study/widget/home_detail_view/credit_card_container_widget.dart';
 import 'package:teklifim_gelsin_case_study/widget/page_headline_widget.dart';
 
@@ -43,10 +38,9 @@ class _HomeDetailViewState extends State<HomeDetailView> {
       ..setSponsorAndActiveOffers;
 
     return Scaffold(
-      appBar: AppbarWidget(
-          onPressedAction: () => context.read<HomeDetailCubit>().a()),
+      appBar: AppbarWidget(onPressedAction: () {}),
       body: SingleChildScrollView(
-        physics: AlwaysScrollableScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(),
         padding: const PaddingConstants.kStandartWidgetSpacing(),
         child: Column(
           children: [
@@ -62,7 +56,7 @@ class _HomeDetailViewState extends State<HomeDetailView> {
               'Seninle uyumlu ${_homeDetailCubit.state.offersModel.countTotalOffers} kredi kartı var!',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
-            DynamicSizedBox(size: 10),
+            DynamicSizedBox(size: MediaQuery.sizeOf(context).height * 0.01),
             BlocSelector<HomeDetailCubit, HomeDetailState, List<OfferModel>?>(
               selector: (state) => state.sponsorAndActiveOffers,
               builder: (context, state) {
@@ -79,7 +73,16 @@ class _HomeDetailViewState extends State<HomeDetailView> {
                     bool isSponsorAndActiveOffersEmpty = state?.isEmpty ?? true;
                     if (isSponsorAndActiveOffersEmpty) const SizedBox.shrink();
                     final offer = state![index];
-                    return CreditCardContainerWidget(offerModel: offer);
+                    return Hero(
+                      tag: 'creditCardTag',
+                      child: CreditCardContainerWidget(
+                        offerModel: offer,
+                        onTap: () => context
+                            .read<HomeDetailCubit>()
+                            .openDialogForDetails(
+                                context: context, offerModel: offer),
+                      ),
+                    );
                   },
                 );
               },

@@ -134,10 +134,9 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w400,
     ),
     titleLarge: TextStyle(
-      color: ColorConstant.kTextColorBlack(),
-      fontSize: 20,
-      fontWeight: FontWeight.w300,
-    ),
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        color: ColorConstant.kOfferDialogRatioTextColor()),
     bodyLarge: TextStyle(
       color: ColorConstant.kTextColorBlack(),
       fontSize: 16,

@@ -26,5 +26,6 @@ class ColorConstant extends Color {
   const ColorConstant.kSponsoredDividerColor()
       : super.fromRGBO(244, 195, 67, 1);
   const ColorConstant.kActiveOfferTextColor() : super.fromRGBO(105, 172, 94, 1);
+  const ColorConstant.kOfferDialogRatioTextColor()
+      : super.fromRGBO(23, 23, 23, 1);
 }
-

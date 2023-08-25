@@ -53,6 +53,9 @@ dependencies:
   #Path Provider
   path_provider: ^2.0.11
 
+  #Adaptive Dialog (Different Dialogs for IOS and Android)
+  #adaptive_dialog: ^1.9.0
+
 
 dev_dependencies:
   flutter_test:
