@@ -1,16 +1,14 @@
 # teklifim_gelsin_case_study
 
-A new Flutter project.
 
-## Getting Started
+<h4 align="start">Each of the titles described in this project will be branched as trunk-based-development.</h4>
+<h4 align="start">Also, if you want to see the project status in a table, I have opened the Project Table in the repository for you (like Trello or Confluence).</h4>
+<h4 align="start">The project is completely dynamically designed and as a "Responsive Framework", it gives results in the same dimensions on different screens.</h4>
 
-This project is a starting point for a Flutter application.
+<h3 align="start"> 1 - Data Modelling</h3>
+<h4 align="start"> First, the data given in the project documentation and the model json returned to us by post request via Postman were examined.</h2>
+<h4 align="start"> toJson(), fromJson(), and props are defined as "OffersModel", the model containing all the data, and "OfferModel" for identical submodels.</h2>
+<h4 align="start"> At this stage, the reason why generator packages such as "json_serializable" and "json_annotation" are not used is to be able to fetch and pull data as custom.</h2>
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
