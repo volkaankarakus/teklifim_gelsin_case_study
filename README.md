@@ -27,6 +27,11 @@
 <h3 align="start"> 5 - Bloc/Cubit List Manupulation </h3>
 <h4 align="start"> When using Bloc/Cubit, for field manipulations in any list, a new list definition must be given with .toList() even if it is defined, instant screen changes must be given with the initList() method and didChangeDependency() in the view, which are also necessary for the changes to be displayed on the screen.</h4>
 
+<h3 align="start"> 6 - Widget Design </h3>
+<h4 align="start"> The general widgets to be used in the project are defined in the widget file. Widgets in Views are also fragmented into "subwidgets" within this widget file as much as possible.</h4>
+
+
+
 
 
 
