@@ -1,12 +1,13 @@
 # teklifim_gelsin_case_study
-<h3 align="start">For Video -> https://www.youtube.com/shorts/2BuFnVyNs_A </h3>
-
 <img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 53 14" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/fdab474b-0c40-4f37-b74e-35fa1fa93f56">
 <img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 41" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/aa439baf-7db1-41f0-aaec-78bb5792fe24">
 <img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 52" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/c523dca2-d5b6-48b5-9992-4d92c2c74aed">
 <img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 59" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/b8dcc7bc-a47e-492e-88db-e594f58edefd">
 <img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 47 08" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/8fd25be8-7792-477c-a0f2-c5aef2c97a11">
 <img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 47 16" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/f82a866a-327a-41b1-924a-2a3986cea10f">
+
+<h3 align="start">For Video -> https://www.youtube.com/shorts/2BuFnVyNs_A </h3>
+
 
 <h4 align="start">Each of the titles described in this project will be branched as trunk-based-development.</h4>
 <h4 align="start">Also, if you want to see the project status in a table, I have opened the Project Table in the repository for you (like Trello or Confluence).</h4>
