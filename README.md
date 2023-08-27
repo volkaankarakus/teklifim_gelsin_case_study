@@ -19,6 +19,27 @@
 <h3 align="start"> 3 - Image Service </h3>
 <h4 align="start"> "CustomImageCacheManager" was written so that the build and rendering times of all images to be used in the project would not cause problems in the application. This service resets itself every "15 DAYS" and limits the images to be cached to "100 IMAGES" during this period. Using this service, when the app is opened repeatedly, the images will not be reloaded and will be displayed quickly.</h4>
 
+<h3 align="start"> 4 - HomePage & HomeDetail Page & Extensions & Bloc/Cubit </h3>
+<h4 align="start"> For both pages, the states are in their own "state" script, the methods in the "cubit" script are used for changes on the states and screen changes.</h4>
+<h4 align="start"> Special extensions of variables or models were written for changes in state.</h4>
+<h4 align="start"> A viewModel belonging to HomeDetailView did not need to exist on a per-project basis. We could use these values ​​in a single viewModel with "BlocProvider.value()". But since HomeDetailView's SPECIFIC STATES CAN BE DEFINED LATER, a BlocProvider specific to this page is defined (with MultiBlocProvider). The data used when going to HomeDetailView is taken from HomeView by set. </h4>
+
+<h3 align="start"> 5 - Bloc/Cubit List Manupulation </h3>
+<h4 align="start"> When using Bloc/Cubit, for field manipulations in any list, a new list definition must be given with .toList() even if it is defined, instant screen changes must be given with the initList() method and didChangeDependency() in the view, which are also necessary for the changes to be displayed on the screen.</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
