@@ -1,4 +1,6 @@
 # teklifim_gelsin_case_study
+<h3 align="start">For Video -> https://www.youtube.com/shorts/2BuFnVyNs_A </h3>
+
 <img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 53 14" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/fdab474b-0c40-4f37-b74e-35fa1fa93f56">
 <img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 41" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/aa439baf-7db1-41f0-aaec-78bb5792fe24">
 <img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 52" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/c523dca2-d5b6-48b5-9992-4d92c2c74aed">
