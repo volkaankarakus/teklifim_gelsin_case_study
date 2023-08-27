@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:teklifim_gelsin_case_study/constant/color_constant.dart';
@@ -20,7 +19,7 @@ class ApplyNowContainerWidget extends StatelessWidget {
       onTap: onTap,
       child: BoxContainer(
         height: 50,
-        color: ColorConstant.kContinueBoxContainerFilledBackgroundColor(),
+        color: const ColorConstant.kContinueBoxContainerFilledBackgroundColor(),
         width: double.infinity,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

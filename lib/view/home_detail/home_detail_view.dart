@@ -6,11 +6,9 @@ import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type.dart
 import 'package:teklifim_gelsin_case_study/model/offer_model.dart';
 import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/offers_model_extension.dart';
 import 'package:teklifim_gelsin_case_study/view_model(cubit)/home_detail/home_detail_cubit.dart';
-import 'package:teklifim_gelsin_case_study/widget/appbar/appbar_widget.dart';
 import 'package:teklifim_gelsin_case_study/widget/appbar/sliver_app_bar_widget.dart';
 import 'package:teklifim_gelsin_case_study/widget/dynamic_sized_box.dart';
 import 'package:teklifim_gelsin_case_study/widget/home_detail_view/credit_card_container_widget.dart';
-import 'package:teklifim_gelsin_case_study/widget/page_headline_widget.dart';
 
 class HomeDetailView extends StatefulWidget {
   final List<CardModel>? howOldAreYouCardList;
@@ -42,7 +40,7 @@ class _HomeDetailViewState extends State<HomeDetailView> {
       body: CustomScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         slivers: [
-          SliverAppbarWidget(),
+          const SliverAppbarWidget(),
           SliverToBoxAdapter(
             child: SizedBox(
               child: Center(

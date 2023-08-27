@@ -9,7 +9,6 @@ import 'package:teklifim_gelsin_case_study/model/card_model/card_model_type_spen
 import 'package:teklifim_gelsin_case_study/model/offer_model.dart';
 import 'package:teklifim_gelsin_case_study/model/offers_model.dart';
 import 'package:teklifim_gelsin_case_study/request/post/create_card_post_request.dart';
-import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/credit_card_expectations_extension.dart';
 import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/list_card_model_extension.dart';
 import 'package:teklifim_gelsin_case_study/widget/home_detail_view/home_detail_dialog/credit_card_detail_dialog_widget.dart';
 
