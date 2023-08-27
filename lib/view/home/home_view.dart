@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppbarWidget(),
+      appBar: const AppbarWidget(),
       body: Padding(
         padding: const PaddingConstants.kStandartWidgetSpacing(),
         child: Column(
@@ -38,23 +38,3 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
-
-              // BlocSelector<HomeCubit, HomeState, OffersModel?>(
-              //   selector: (state) => state.offersModel,
-              //   builder: (context, state) {
-              //     return ListView.builder(
-              //       shrinkWrap: true,
-              //       itemCount: state?.active_offers?.length ?? 0,
-              //       itemBuilder: (context, index) {
-              //         bool isActiveOffersEmpty =
-              //             state?.active_offers?.isEmpty ?? true;
-              //         if (isActiveOffersEmpty) return SizedBox.shrink();
-
-              //         List<OfferModel>? activeOffers = state!.active_offers;
-              //         return Card(
-              //           child: Text(activeOffers![index].rating.toString()),
-              //         );
-              //       },
-              //     );
-              //   },
-              // ),

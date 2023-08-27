@@ -20,6 +20,7 @@ final class HomeDetailState extends Equatable {
   // Sponsored & Active Offers
   List<OfferModel>? sponsorAndActiveOffers;
 
+  // ** copyWith
   HomeDetailState copyWith({
     List<CardModel>? howOldAreYouCardList,
     List<CardModel<CardModelType>>? spendingHabitsCardList,
@@ -39,6 +40,7 @@ final class HomeDetailState extends Equatable {
     );
   }
 
+  // ** Props
   @override
   List<Object?> get props => [
         howOldAreYouCardList,

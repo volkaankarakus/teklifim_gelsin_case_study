@@ -7,6 +7,7 @@ import 'package:teklifim_gelsin_case_study/model/offer_model.dart';
 import 'package:teklifim_gelsin_case_study/utils/enum_and_extension/offers_model_extension.dart';
 import 'package:teklifim_gelsin_case_study/view_model(cubit)/home_detail/home_detail_cubit.dart';
 import 'package:teklifim_gelsin_case_study/widget/appbar/appbar_widget.dart';
+import 'package:teklifim_gelsin_case_study/widget/appbar/sliver_app_bar_widget.dart';
 import 'package:teklifim_gelsin_case_study/widget/dynamic_sized_box.dart';
 import 'package:teklifim_gelsin_case_study/widget/home_detail_view/credit_card_container_widget.dart';
 import 'package:teklifim_gelsin_case_study/widget/page_headline_widget.dart';
@@ -33,62 +34,59 @@ class _HomeDetailViewState extends State<HomeDetailView> {
 
     _homeDetailCubit
       ..setHowOldAreUs(widget.howOldAreYouCardList)
-      ..setCardExpectations(widget.spendingHabitsCardList)
-      ..setSpendingHabits(widget.creditCardExpectationsCardList)
+      ..setCardExpectations(widget.creditCardExpectationsCardList)
+      ..setSpendingHabits(widget.spendingHabitsCardList)
       ..setSponsorAndActiveOffers;
 
     return Scaffold(
-      appBar: AppbarWidget(onPressedAction: () {}),
-      body: SingleChildScrollView(
+      body: CustomScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
-        padding: const PaddingConstants.kStandartWidgetSpacing(),
-        child: Column(
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                PageHeadlineWidget(
-                  headlineText: 'Kredi Kartları',
+        slivers: [
+          SliverAppbarWidget(),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              child: Center(
+                child: Text(
+                  'Seninle uyumlu ${_homeDetailCubit.state.offersModel.countTotalOffers} kredi kartı var!',
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
-              ],
+              ),
             ),
-            Text(
-              'Seninle uyumlu ${_homeDetailCubit.state.offersModel.countTotalOffers} kredi kartı var!',
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            DynamicSizedBox(size: MediaQuery.sizeOf(context).height * 0.01),
-            BlocSelector<HomeDetailCubit, HomeDetailState, List<OfferModel>?>(
-              selector: (state) => state.sponsorAndActiveOffers,
-              builder: (context, state) {
-                return ListView.separated(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: state?.length ?? 0,
-                  separatorBuilder: (context, index) {
-                    return DynamicSizedBox(
-                      size: 20,
-                    );
-                  },
-                  itemBuilder: (context, index) {
-                    bool isSponsorAndActiveOffersEmpty = state?.isEmpty ?? true;
-                    if (isSponsorAndActiveOffersEmpty) const SizedBox.shrink();
-                    final offer = state![index];
-                    return Hero(
-                      tag: 'creditCardTag',
-                      child: CreditCardContainerWidget(
-                        offerModel: offer,
-                        onTap: () => context
-                            .read<HomeDetailCubit>()
-                            .openDialogForDetails(
-                                context: context, offerModel: offer),
-                      ),
-                    );
-                  },
-                );
-              },
-            )
-          ],
-        ),
+          ),
+          SliverToBoxAdapter(
+            child:
+                DynamicSizedBox(size: MediaQuery.sizeOf(context).height * 0.01),
+          ),
+          BlocSelector<HomeDetailCubit, HomeDetailState, List<OfferModel>?>(
+            selector: (state) => state.sponsorAndActiveOffers,
+            builder: (context, state) {
+              return SliverList.separated(
+                itemCount: state?.length ?? 0,
+                separatorBuilder: (context, index) {
+                  return DynamicSizedBox(
+                    size: MediaQuery.sizeOf(context).height * 0.02,
+                  );
+                },
+                itemBuilder: (context, index) {
+                  bool isSponsorAndActiveOffersEmpty = state?.isEmpty ?? true;
+                  if (isSponsorAndActiveOffersEmpty)
+                    SliverToBoxAdapter(child: const SizedBox.shrink());
+                  final offer = state![index];
+                  return Padding(
+                    padding: const PaddingConstants.kStandartWidgetSpacing(),
+                    child: CreditCardContainerWidget(
+                      offerModel: offer,
+                      onTap: () => context
+                          .read<HomeDetailCubit>()
+                          .openDialogForDetails(
+                              context: context, offerModel: offer),
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+        ],
       ),
     );
   }

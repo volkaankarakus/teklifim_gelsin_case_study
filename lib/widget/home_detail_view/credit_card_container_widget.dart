@@ -20,7 +20,7 @@ class CreditCardContainerWidget extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 240,
+        height: MediaQuery.sizeOf(context).height * 0.25,
         decoration: BoxDecoration(
             color: const ColorConstant.kBoxContainerBackgroundColor(),
             borderRadius: BorderRadius.circular(20),
@@ -31,7 +31,7 @@ class CreditCardContainerWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const DynamicSizedBox(size: 10),
+            DynamicSizedBox(size: MediaQuery.sizeOf(context).height * 0.01),
             Flexible(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -59,7 +59,8 @@ class CreditCardContainerWidget extends StatelessWidget {
                           color: offerModel.asColorSponsorOrActive,
                         ),
                   ),
-                  const DynamicSizedBox(size: 5),
+                  DynamicSizedBox(
+                      size: MediaQuery.sizeOf(context).height * 0.01),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(12),
                     child: Stack(
@@ -82,24 +83,16 @@ class CreditCardContainerWidget extends StatelessWidget {
                         )
                       ],
                     ),
-
-                    // Divider(
-                    //   indent: 100,
-                    //   color: Color.lerp(
-                    //       ColorConstant.kActiveOfferTextColor(),
-                    //       ColorConstant.kBoxContainerColorPassive(),
-                    //       offerModel.rating ?? 20),
-                    //   thickness: 15,
-                    // ),
                   ),
-                  const DynamicSizedBox(size: 10),
+                  DynamicSizedBox(
+                      size: MediaQuery.sizeOf(context).height * 0.01),
                   ApplyNowContainerWidget(
                     onTap: () {},
                     text:
                         offerModel.isSponsorOffer ? 'Hemen Başvur!' : 'Başvur',
                   ),
-                  const DynamicSizedBox(
-                    size: 15,
+                  DynamicSizedBox(
+                    size: MediaQuery.sizeOf(context).height * 0.01,
                   )
                 ],
               ),

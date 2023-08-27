@@ -134,7 +134,8 @@ class CreditCardDetailDialogWidget extends StatelessWidget {
                   onTap: () {},
                   text: offerModel.isSponsorOffer ? 'Hemen Başvur!' : 'Başvur',
                 ),
-                const DynamicSizedBox(size: 15)
+                DynamicSizedBox(
+                    size: MediaQuery.sizeOf(context).height * 0.015),
               ],
             ),
           ),

@@ -8,7 +8,6 @@ class CardModelTypeHowOldAreU extends CardModelType {
 }
 
 // ** How old are u subclasses
-// -18 & 18
 class CardModelTypeHowOldAreUUnder18 extends CardModelTypeHowOldAreU {
   CardModelTypeHowOldAreUUnder18()
       : super(
@@ -17,7 +16,6 @@ class CardModelTypeHowOldAreUUnder18 extends CardModelTypeHowOldAreU {
         );
 }
 
-// 19 - 25
 class CardModelTypeHowOldAreUBetween19and25 extends CardModelTypeHowOldAreU {
   CardModelTypeHowOldAreUBetween19and25()
       : super(
@@ -26,7 +24,6 @@ class CardModelTypeHowOldAreUBetween19and25 extends CardModelTypeHowOldAreU {
         );
 }
 
-// 26 - 35
 class CardModelTypeHowOldAreUBetween26and35 extends CardModelTypeHowOldAreU {
   CardModelTypeHowOldAreUBetween26and35()
       : super(
@@ -35,7 +32,6 @@ class CardModelTypeHowOldAreUBetween26and35 extends CardModelTypeHowOldAreU {
         );
 }
 
-// 36 & +36
 class CardModelTypeHowOldAreUOlderAndEqual36 extends CardModelTypeHowOldAreU {
   CardModelTypeHowOldAreUOlderAndEqual36()
       : super(

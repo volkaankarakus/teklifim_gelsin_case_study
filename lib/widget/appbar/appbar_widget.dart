@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:teklifim_gelsin_case_study/constant/color_constant.dart';
 
 @immutable
 class AppbarWidget extends StatefulWidget implements PreferredSizeWidget {
@@ -20,7 +21,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
       title: Image.asset(
         'lib/assets/home_view/img_logo.png',
-        width: 200,
+        width: MediaQuery.sizeOf(context).width * 0.5,
         fit: BoxFit.fitWidth,
       ),
       actions: [
@@ -29,6 +30,7 @@ class _AppbarWidgetState extends State<AppbarWidget> {
           icon: const Icon(
             CupertinoIcons.gift,
             size: 30,
+            color: ColorConstant.kTextColorBlack(),
           ),
         ),
       ],

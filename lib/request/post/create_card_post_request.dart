@@ -11,21 +11,21 @@ class CreateCardPostRequest {
   // Dependency Injection Service
   NetworkDioMakerService _dioService = locator<NetworkDioMakerService>();
 
-  int connectionTimeOut = 2000;
+  int connectionTimeOut = 20000;
 
-  final data = {
-    "age": "4",
-    "bill": "8",
-    "dining": "5",
-    "grocery": "1",
-    "installment": "5",
-    "mile": "2",
-    "online_shopping": "3",
-    "other": "13",
-    "point": "3",
-    "sale_cashback": "1",
-    "travel": "2"
-  };
+  // final data = {
+  //   "age": "2",
+  //   "bill": "8",
+  //   "dining": "5",
+  //   "grocery": "1",
+  //   "installment": "5",
+  //   "mile": "2",
+  //   "online_shopping": "3",
+  //   "other": "13",
+  //   "point": "3",
+  //   "sale_cashback": "1",
+  //   "travel": "2"
+  // };
 
   Dio createDio() {
     return _dioService.networkDioMaker(
@@ -34,7 +34,7 @@ class CreateCardPostRequest {
   }
 
   // ** POST METHOD
-  Future<Response> implementGivenAPIResponse() async {
+  Future<Response> implementGivenAPIResponse({required Map<String, String> data}) async {
     Response response;
     Dio dio = createDio();
     try {
@@ -48,8 +48,8 @@ class CreateCardPostRequest {
     return response;
   }
 
-  Future<OffersModel?> fetchOffers() async {
-    Response response = await implementGivenAPIResponse();
+  Future<OffersModel?> fetchOffers({required Map<String, String> data}) async {
+    Response response = await implementGivenAPIResponse(data: data);
     if (response.statusCode == HttpStatus.ok) {
       String body = jsonEncode(response.data);
       OffersModel offersModel = OffersModel.fromJson(body);

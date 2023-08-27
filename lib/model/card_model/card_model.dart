@@ -4,10 +4,12 @@ class CardModel<T extends CardModelType> {
   int index;
   T type;
   bool? isSelected;
+  int point;
 
   CardModel({
     this.index = 0,
     required this.type,
     this.isSelected = false,
+    this.point = 1,
   });
 }

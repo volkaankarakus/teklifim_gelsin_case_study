@@ -33,4 +33,27 @@ extension ListCardModelExtension on List<CardModel<CardModelType>>? {
     }
     return [];
   }
+
+  // ** DETERMINE AGE POINTS
+  int get determineAgeJsonData {
+    return this?.firstWhere((element) => element.isSelected == true).type.id ?? 0;
+  }
+
+  // ** DETERMINE CARD POINTS
+  List<CardModel<CardModelType>> get determineCardPointsJsonData {
+    List<CardModel<CardModelType>>? selectedCards =
+        this?.where((element) => element.isSelected == true).toList();
+     List<CardModel<CardModelType>>? unSelectedCards =
+        this?.where((element) => element.isSelected != true).toList();
+      
+
+    selectedCards?.sort((a, b) => a.index.compareTo(b.index));
+
+    int selectedCardsLength = selectedCards?.length ?? 0;
+    List<int> a = [13, 8, 5, 3, 2, 1];
+    for (int i = 0; i < selectedCardsLength; i++) {
+      selectedCards![i].point = a[6 - selectedCardsLength + i];
+    }
+    return [...selectedCards!,...unSelectedCards!];
+  }
 }

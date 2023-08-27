@@ -13,14 +13,11 @@ class CreditCardDetailDialogExplanationsColumnWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          width: 50,
-          child: Wrap(
-            crossAxisAlignment: WrapCrossAlignment.start,
-            children: [
-              Text(headlineText),
-            ],
-          ),
+        Wrap(
+          crossAxisAlignment: WrapCrossAlignment.start,
+          children: [
+            Text(headlineText),
+          ],
         ),
         Text(valueText),
       ],

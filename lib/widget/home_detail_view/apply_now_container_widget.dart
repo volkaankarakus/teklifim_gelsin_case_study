@@ -30,7 +30,9 @@ class ApplyNowContainerWidget extends StatelessWidget {
               color: ColorConstant.kContinueBoxContainerTextColor(),
               size: 20,
             ),
-            DynamicSizedBox(size: 10, axis: Axis.horizontal),
+            DynamicSizedBox(
+                size: MediaQuery.sizeOf(context).height * 0.01,
+                axis: Axis.horizontal),
             Text(text,
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                       color:
