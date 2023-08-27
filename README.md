@@ -1,12 +1,19 @@
 # teklifim_gelsin_case_study
-<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 53 14" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/fdab474b-0c40-4f37-b74e-35fa1fa93f56">
-<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 41" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/aa439baf-7db1-41f0-aaec-78bb5792fe24">
-<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 52" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/c523dca2-d5b6-48b5-9992-4d92c2c74aed">
-<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 59" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/b8dcc7bc-a47e-492e-88db-e594f58edefd">
-<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 47 08" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/8fd25be8-7792-477c-a0f2-c5aef2c97a11">
-<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 47 16" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/f82a866a-327a-41b1-924a-2a3986cea10f">
+
 
 <h3 align="start">For Video -> https://www.youtube.com/shorts/2BuFnVyNs_A </h3>
+<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 53 14" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/bd2dcbf2-1b78-4456-a86b-efd72acec28a">
+<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 52" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/bfd5592d-8e52-4c1b-843d-859a2a9ebdeb">
+<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 41" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/0bd8bf27-1968-459f-acce-67b64b94d9ff">
+<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 46 59" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/85757d0b-08ad-45d0-acfe-b3fdb883d2cc">
+<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 47 08" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/d9881976-e5ad-4ef8-81e9-3bed027095b2">
+<img width="300" height ="600" alt="Screenshot 2023-08-27 at 18 47 16" src="https://github.com/volkaankarakus/teklifim_gelsin_case_study/assets/64658867/7b6c24e1-302f-463c-87ec-f599c72716a6">
+
+
+
+
+
+
 
 
 <h4 align="start">Each of the titles described in this project will be branched as trunk-based-development.</h4>
